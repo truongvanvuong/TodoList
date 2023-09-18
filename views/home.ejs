@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quicksand&display=swap"
+        rel="stylesheet">
+    <title>Todo List</title>
+</head>
+
+<body>
+    <main>
+        <div class="app">
+            <div class="content">
+                <h1 class="title"> TODO List</h1>
+                <h2 class="title__job">
+                    <%=titleListName%>
+                </h2>
+                <div class="wrapper">
+                    <div>
+                        <form class="add__job" action="/" method="POST">
+                            <input type="text" placeholder="Thêm công việc của bạn" name="job" class="input_job" />
+                            <%- htmlContent %>
+                                <button type="submit" class="btn_add" name="listname"
+                                    value="<%=titleListName %>">Thêm</button>
+
+                        </form>
+                    </div>
+                    <div class="todo__list">
+                        <ul class="work__list">
+                            <% if(jobs.length <=0 ) { %>
+                                <h2 class='mess'> Bạn Chưa thêm công việc cần làm</h2>
+                                <% } else { %>
+                                    <% jobs.forEach((job, index)=> { %>
+                                        <li class="work__item animate__animated ">
+                                            <div class="item_children">
+                                                <input type="checkbox" data-index="<%= index %>">
+                                                <p>
+                                                    <%=job.name %>
+                                                </p>
+                                            </div>
+                                            <i class="ti-close"
+                                                onclick="handleDelete('<%=job._id %>', '<%=index %>','<%=titleListName%>')"></i>
+                                        </li>
+                                        <% }) %>
+                                            <%} %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="footer"> Copyright <%=new Date().getFullYear() %> @VanVuong</p>
+    </main>
+    <script>
+        const checkBoxs = document.querySelectorAll('input[type="checkbox"]');
+        const jobs = document.querySelectorAll('.item_children > p');
+        const workItem = document.querySelectorAll('.work__item')
+
+        checkBoxs.forEach(checkBox => {
+            checkBox.addEventListener('change', (e) => {
+                const index = e.target.getAttribute('data-index');
+                const jobsCheck = jobs[index];
+                const checkbox = checkBoxs[index];
+                if (checkBox.checked) {
+                    jobsCheck.style.textDecoration = 'line-through';
+                } else {
+                    jobsCheck.style.textDecoration = 'none';
+
+                }
+
+            })
+        })
+        function handleDelete(id, index, listname) {
+            fetch(`/delete/${listname}/${id}`, { method: "DELETE" })
+                .then((response) => {
+                    if (response.status === 200) {
+                        workItem[index].classList.add('animate__fadeOutUp')
+                        setTimeout(() => {
+                            location.reload();
+                        }, 700);
+                    }
+                })
+                .catch((error) => {
+                    console.log("Lỗi khi xóa công việc:", error);
+                });
+        }
+
+    </script>
+</body>
+
+</html>

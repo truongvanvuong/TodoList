@@ -1,0 +1,202 @@
+ * {
+     box-sizing: border-box;
+ }
+
+ :root {
+     --animate-duration: 1s;
+ }
+
+ body {
+     margin: 0;
+ }
+
+ html {
+     font-size: 62.5%;
+     font-family: 'Barlow', sans-serif;
+     font-family: 'Quicksand', sans-serif;
+ }
+
+ .app {
+     margin: 60px 0 40px 0;
+     width: 100%;
+     height: 100%;
+     display: flex;
+ }
+
+ .content {
+     min-width: 600px;
+     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+     margin: auto;
+ }
+
+ .title {
+     text-align: center;
+     font-size: 2.6rem;
+ }
+
+ .title__job {
+     font-weight: 700;
+     font-size: 2rem;
+     border-radius: 8px;
+     text-transform: capitalize;
+     text-align: center;
+     line-height: 40px;
+     margin: 20px auto;
+     width: 40%;
+     color: #fff;
+     height: 40px;
+     background-color: #1e8449;
+ }
+
+ .wrapper {
+     max-width: 90%;
+     padding: 0 12px;
+     margin: 0 auto;
+ }
+
+ .add__job,
+ .todo__list {
+     border-radius: 12px;
+     display: flex;
+     flex-direction: column;
+     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+ }
+
+ .input_job {
+     outline: none;
+     width: 80%;
+     height: 40px;
+     font-size: 1.6rem;
+     margin: 20px auto;
+     border-top: none;
+     border-left: none;
+     border-right: none;
+ }
+
+ .input_job:focus {
+     border-color: #27ae60;
+ }
+
+ .btn_add {
+     margin: 0 auto 20px auto;
+     appearance: none;
+     backface-visibility: hidden;
+     background-color: #1e8449;
+     border-radius: 8px;
+     border-style: none;
+     box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+     box-sizing: border-box;
+     color: #fff;
+     cursor: pointer;
+     display: inline-block;
+     font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+     font-size: 16px;
+     font-weight: 600;
+     letter-spacing: normal;
+     line-height: 1.5;
+     outline: none;
+     overflow: hidden;
+     padding: 12px 32px;
+     position: relative;
+     text-align: center;
+     text-decoration: none;
+     transform: translate3d(0, 0, 0);
+     transition: all .3s;
+     user-select: none;
+     -webkit-user-select: none;
+     touch-action: manipulation;
+     vertical-align: top;
+     white-space: nowrap;
+ }
+
+ .btn_add:hover {
+     opacity: 0.9;
+     transform: translateY(0);
+     transition-duration: .35s;
+ }
+
+ .btn_add:active {
+     transform: translateY(2px);
+     transition-duration: .35s;
+ }
+
+ .btn_add:hover {
+     box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+ }
+
+ .todo__list {
+     transition: all 1s linear;
+     margin: 22px 0;
+ }
+
+ .work__list {
+     list-style: none;
+     padding: 20px;
+     margin: 10px;
+ }
+
+ .work__item {
+     transition: all 1s linear;
+     padding: 16px 0;
+     justify-content: space-between;
+     display: flex;
+     align-items: center;
+     border-bottom: 1px solid #27ae60;
+     ;
+ }
+
+ .work__item:last-child {
+     border-bottom: none;
+ }
+
+ .item_children {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .item_children>p {
+     font-size: 1.8rem;
+     margin: 0;
+ }
+
+ .item_children>input {
+     width: 16px;
+     height: 16px;
+ }
+
+ .ti-close {
+     cursor: pointer;
+     font-size: 1.3rem;
+ }
+
+ .ti-close:hover {
+     transition: all linear 0.4s;
+     transform: scale(1.1);
+ }
+
+ .mess {
+     margin: 10px 0 20px 0;
+     text-align: center;
+ }
+
+ /* table */
+
+ @media (max-width: 576px) {
+     .content {
+         min-width: 100%;
+         box-shadow: none;
+         margin: 20px auto;
+     }
+
+     .wrapper {
+         padding: 0;
+     }
+ }
+
+ .footer {
+     text-align: center;
+     font-size: 1.6rem;
+     font-weight: 600;
+     margin-bottom: 40px;
+ }
