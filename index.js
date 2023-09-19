@@ -10,13 +10,19 @@ let htmlContent;
 app.use(express.static("public"));
 app.use(urlencodedParser);
 
-mongoose.connect(
-  "mongodb+srv://VanVuong:Vuong712219@atlascluster.wlbvsbu.mongodb.net/todoListDB",
-  {
-    useNewUrlParser: true,
+async function connectToMongoDB() {
+  try {
+    // Your MongoDB connection code here
+    await mongoose.connect(
+      "mongodb+srv://VanVuong:Vuong712219@atlascluster.wlbvsbu.mongodb.net/todoListDB",
+      { useNewUrlParser: true }
+    );
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
   }
-);
-
+}
+connectToMongoDB();
 const itemsSchema = {
   name: String,
 };
